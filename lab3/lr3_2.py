@@ -1,13 +1,12 @@
-# TODO Напишите функцию для поиска индекса товара
-def search_item(lis, item):
-    if item in lis:
-        return lis.index(item)
+def find_common_participants(group1, group2, separator=','):
+    participants1 = set(group1.split(separator))
+    participants2 = set(group2.split(separator))
+    common_participants = sorted(participants1.intersection(participants2))
+    return common_participants
 
-items_list = ['яблоко', 'банан', 'апельсин', 'груша', 'киви', 'банан']
+participants_first_group = "Иванов|Петров|Сидоров"
+participants_second_group = "Петров|Сидоров|Смирнов"
 
-for find_item in ['банан', 'груша', 'персик']:
-    index_item = search_item(items_list, find_item)   # TODO Вызовите функцию, что получить индекс товара
-    if index_item is not None:
-        print(f"Первое вхождение товара '{find_item}' имеет индекс {index_item}.")
-    else:
-        print(f"Товар '{find_item}' не найден в списке.")
+# Testing the function with a separator different from a comma
+result = find_common_participants(participants_first_group, participants_second_group, separator='; ')
+print(result)
